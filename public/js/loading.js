@@ -54,6 +54,19 @@ class LoadingScreen {
 window.loadingScreen = new LoadingScreen();
 
 // Auto-hide when page loads
-window.addEventListener('load', () => {
+if (document.readyState === 'complete') {
+    // Page already loaded (e.g., on refresh)
     window.loadingScreen.hide();
+} else {
+    // Page still loading
+    window.addEventListener('load', () => {
+        window.loadingScreen.hide();
+    });
+}
+
+// Also hide after DOMContentLoaded as backup
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        window.loadingScreen.hide();
+    }, 100);
 });
