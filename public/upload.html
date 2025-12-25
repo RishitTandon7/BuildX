@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload & Order - BuildX</title>
+    <meta name="description"
+        content="Upload your design files and get instant pricing for CNC cutting, laser cutting, and 3D printing services.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/upload.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/three@0.150.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.150.0/examples/js/loaders/STLLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.150.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+
+<body>
+    <!-- Navigation (same as index.html) -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4L36 12V28L20 36L4 28V12L20 4Z" stroke="currentColor" stroke-width="2"
+                        stroke-linejoin="round" />
+                    <path d="M20 4V20M20 20L36 28M20 20L4 28M20 20L36 12M20 20L4 12" stroke="currentColor"
+                        stroke-width="1.5" opacity="0.5" />
+                </svg>
+                <span class="logo-text">Build<span class="logo-accent">X</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="upload.html" class="nav-link active">Upload & Order</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5" />
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
+                </button>
+                <a href="admin.html" class="btn-secondary">Admin</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Upload Section -->
+    <main class="upload-page">
+        <div class="container">
+            <!-- Progress Steps -->
+            <div class="progress-steps">
+                <div class="step-item active" data-step="1">
+                    <div class="step-circle">1</div>
+                    <div class="step-label">Select Service</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step-item" data-step="2">
+                    <div class="step-circle">2</div>
+                    <div class="step-label">Upload File</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step-item" data-step="3">
+                    <div class="step-circle">3</div>
+                    <div class="step-label">Configure</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step-item" data-step="4">
+                    <div class="step-circle">4</div>
+                    <div class="step-label">Review & Order</div>
+                </div>
+            </div>
+
+            <!-- Step 1: Service Selection -->
+            <div class="step-content" id="step1">
+                <h2 class="step-title">Select Your Service</h2>
+                <div class="service-selection">
+                    <div class="service-option" data-service="3d-printing">
+                        <div class="service-option-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                                <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
+                            </svg>
+                        </div>
+                        <h3>3D Printing</h3>
+                        <p>FDM & Resin printing</p>
+                        <div class="file-types">STL, OBJ, 3MF</div>
+                    </div>
+                    <div class="service-option" data-service="cnc-cutting">
+                        <div class="service-option-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 6v6l4 2" />
+                            </svg>
+                        </div>
+                        <h3>CNC Cutting</h3>
+                        <p>Precision machining</p>
+                        <div class="file-types">STEP, DXF, DWG</div>
+                    </div>
+                    <div class="service-option" data-service="laser-cutting">
+                        <div class="service-option-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                        </div>
+                        <h3>Laser Cutting</h3>
+                        <p>Clean, precise cuts</p>
+                        <div class="file-types">DXF, SVG, PDF</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: File Upload -->
+            <div class="step-content hidden" id="step2">
+                <h2 class="step-title">Upload Your Design</h2>
+                <div class="upload-container">
+                    <div class="upload-zone" id="uploadZone">
+                        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="17 8 12 3 7 8" />
+                            <line x1="12" y1="3" x2="12" y2="15" />
+                        </svg>
+                        <h3>Drag & drop your file here</h3>
+                        <p>or click to browse</p>
+                        <div class="supported-formats" id="supportedFormats">
+                            Supported: STL, STEP, DXF, SVG, DWG, PDF, OBJ, 3MF
+                        </div>
+                        <input type="file" id="fileInput" accept=".stl,.step,.stp,.dxf,.svg,.dwg,.pdf,.obj,.3mf" hidden>
+                    </div>
+
+                    <div class="file-info hidden" id="fileInfo">
+                        <div class="file-details">
+                            <div class="file-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
+                                    <polyline points="13 2 13 9 20 9" />
+                                </svg>
+                            </div>
+                            <div class="file-meta">
+                                <div class="file-name" id="fileName"></div>
+                                <div class="file-size" id="fileSize"></div>
+                            </div>
+                            <button class="btn-icon" id="removeFile" title="Remove file">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="18" y1="6" x2="6" y2="18" />
+                                    <line x1="6" y1="6" x2="18" y2="18" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="preview-section">
+                            <div class="preview-container" id="previewContainer">
+                                <div class="preview-controls">
+                                    <button class="control-btn" id="resetView" title="Reset view">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
+                                            <path d="M21 3v5h-5" />
+                                        </svg>
+                                    </button>
+                                    <button class="control-btn" id="toggleWireframe" title="Toggle wireframe">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <canvas id="previewCanvas"></canvas>
+                                <div class="preview-info">
+                                    <div class="dimension-info">
+                                        <div class="dimension-item">
+                                            <span class="dimension-label">Width:</span>
+                                            <span class="dimension-value" id="dimWidth">-</span>
+                                        </div>
+                                        <div class="dimension-item">
+                                            <span class="dimension-label">Height:</span>
+                                            <span class="dimension-value" id="dimHeight">-</span>
+                                        </div>
+                                        <div class="dimension-item">
+                                            <span class="dimension-label">Depth:</span>
+                                            <span class="dimension-value" id="dimDepth">-</span>
+                                        </div>
+                                        <div class="dimension-item">
+                                            <span class="dimension-label">Volume:</span>
+                                            <span class="dimension-value" id="dimVolume">-</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-actions">
+                    <button class="btn-secondary" onclick="goToStep(1)">Back</button>
+                    <button class="btn-primary" id="continueToConfig" disabled>Continue to Configuration</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Configuration -->
+            <div class="step-content hidden" id="step3">
+                <h2 class="step-title">Configure Your Order</h2>
+                <div class="config-layout">
+                    <div class="config-form">
+                        <div class="form-section">
+                            <h3 class="form-section-title">Material</h3>
+                            <div class="material-grid" id="materialGrid">
+                                <!-- Materials will be populated based on service -->
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3 class="form-section-title">Specifications</h3>
+                            <div class="form-grid">
+                                <div class="form-group" id="thicknessGroup">
+                                    <label for="thickness">Thickness (mm)</label>
+                                    <select id="thickness" class="form-control">
+                                        <option value="1">1mm</option>
+                                        <option value="2">2mm</option>
+                                        <option value="3" selected>3mm</option>
+                                        <option value="5">5mm</option>
+                                        <option value="10">10mm</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group" id="infillGroup">
+                                    <label for="infill">Infill (%)</label>
+                                    <select id="infill" class="form-control">
+                                        <option value="10">10%</option>
+                                        <option value="20" selected>20%</option>
+                                        <option value="50">50%</option>
+                                        <option value="100">100%</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group" id="layerHeightGroup">
+                                    <label for="layerHeight">Layer Height (mm)</label>
+                                    <select id="layerHeight" class="form-control">
+                                        <option value="0.1">0.1mm (High Quality)</option>
+                                        <option value="0.2" selected>0.2mm (Standard)</option>
+                                        <option value="0.3">0.3mm (Fast)</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="quantity">Quantity</label>
+                                    <input type="number" id="quantity" class="form-control" value="1" min="1"
+                                        max="1000">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3 class="form-section-title">Finish & Color</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="color">Color</label>
+                                    <select id="color" class="form-control">
+                                        <option value="natural">Natural</option>
+                                        <option value="black">Black</option>
+                                        <option value="white">White</option>
+                                        <option value="red">Red</option>
+                                        <option value="blue">Blue</option>
+                                        <option value="green">Green</option>
+                                        <option value="custom">Custom (Contact us)</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="finish">Surface Finish</label>
+                                    <select id="finish" class="form-control">
+                                        <option value="standard">Standard</option>
+                                        <option value="smooth">Smooth</option>
+                                        <option value="polished">Polished</option>
+                                        <option value="anodized">Anodized</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3 class="form-section-title">Additional Options</h3>
+                            <div class="form-group">
+                                <label for="tolerance">Tolerance</label>
+                                <select id="tolerance" class="form-control">
+                                    <option value="standard">Standard (±0.1mm)</option>
+                                    <option value="tight">Tight (±0.05mm)</option>
+                                    <option value="precision">Precision (±0.02mm)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="notes">Special Instructions</label>
+                                <textarea id="notes" class="form-control" rows="3"
+                                    placeholder="Any special requirements or notes..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="price-summary-sticky">
+                        <div class="price-summary">
+                            <h3 class="price-summary-title">Price Estimate</h3>
+
+                            <div class="price-breakdown">
+                                <div class="price-item">
+                                    <span>Material Cost</span>
+                                    <span id="priceMaterial">$0.00</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>Machine Time</span>
+                                    <span id="priceMachine">$0.00</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>Finishing</span>
+                                    <span id="priceFinishing">$0.00</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>Setup Fee</span>
+                                    <span id="priceSetup">$10.00</span>
+                                </div>
+                                <div class="price-divider"></div>
+                                <div class="price-item subtotal">
+                                    <span>Subtotal</span>
+                                    <span id="priceSubtotal">$0.00</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>Tax (10%)</span>
+                                    <span id="priceTax">$0.00</span>
+                                </div>
+                                <div class="price-divider"></div>
+                                <div class="price-item total">
+                                    <span>Total</span>
+                                    <span id="priceTotal">$0.00</span>
+                                </div>
+                            </div>
+
+                            <div class="production-time">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12 6 12 12 16 14" />
+                                </svg>
+                                <div>
+                                    <div class="production-label">Estimated Production Time</div>
+                                    <div class="production-value" id="productionTime">2-3 business days</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-actions">
+                    <button class="btn-secondary" onclick="goToStep(2)">Back</button>
+                    <button class="btn-primary" onclick="goToStep(4)">Review Order</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Review & Submit -->
+            <div class="step-content hidden" id="step4">
+                <h2 class="step-title">Review Your Order</h2>
+                <div class="review-layout">
+                    <div class="review-sections">
+                        <div class="review-card">
+                            <h3>Order Summary</h3>
+                            <div class="review-item">
+                                <span class="review-label">Service:</span>
+                                <span class="review-value" id="reviewService">-</span>
+                            </div>
+                            <div class="review-item">
+                                <span class="review-label">File:</span>
+                                <span class="review-value" id="reviewFile">-</span>
+                            </div>
+                            <div class="review-item">
+                                <span class="review-label">Material:</span>
+                                <span class="review-value" id="reviewMaterial">-</span>
+                            </div>
+                            <div class="review-item">
+                                <span class="review-label">Quantity:</span>
+                                <span class="review-value" id="reviewQuantity">-</span>
+                            </div>
+                            <div class="review-item">
+                                <span class="review-label">Finish:</span>
+                                <span class="review-value" id="reviewFinish">-</span>
+                            </div>
+                        </div>
+
+                        <div class="review-card">
+                            <h3>Contact Information</h3>
+                            <div class="form-group">
+                                <label for="customerName">Full Name *</label>
+                                <input type="text" id="customerName" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="customerEmail">Email *</label>
+                                <input type="email" id="customerEmail" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="customerPhone">Phone *</label>
+                                <input type="tel" id="customerPhone" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="customerAddress">Shipping Address</label>
+                                <textarea id="customerAddress" class="form-control" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="price-summary-sticky">
+                        <div class="price-summary">
+                            <h3 class="price-summary-title">Final Price</h3>
+                            <div class="price-breakdown">
+                                <div class="price-item total">
+                                    <span>Total Amount</span>
+                                    <span id="finalTotal">$0.00</span>
+                                </div>
+                            </div>
+                            <button class="btn-primary btn-block" id="submitOrder">
+                                <span>Submit Order</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                            <p class="submit-note">You'll receive a confirmation email with payment instructions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-actions">
+                    <button class="btn-secondary" onclick="goToStep(3)">Back to Configuration</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="modal hidden" id="successModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="success-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+            </div>
+            <h2>Order Submitted Successfully!</h2>
+            <p>Your order has been received. We'll send you a confirmation email shortly with payment instructions and
+                order details.</p>
+            <div class="order-number">
+                Order #<span id="orderNumber"></span>
+            </div>
+            <button class="btn-primary" onclick="window.location.href='index.html'">Back to Home</button>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/upload.js"></script>
+</body>
+
+</html>
