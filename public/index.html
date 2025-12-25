@@ -14,357 +14,405 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
         rel="stylesheet">
+    <style>
+        /* Critical Loading CSS */
+        body {
+            margin: 0;
+            background: #0a0a0a;
+        }
+
+        #loadingScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #0a0a0a;
+            z-index: 2147483647;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease-out;
+        }
+
+        #mainContent {
+            opacity: 0;
+            transition: opacity 1s ease-in;
+        }
+
+        .visible-content {
+            opacity: 1 !important;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="container nav-container">
-            <div class="logo">
-                <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 4L36 12V28L20 36L4 28V12L20 4Z" stroke="currentColor" stroke-width="2"
-                        stroke-linejoin="round" />
-                    <path d="M20 4V20M20 20L36 28M20 20L4 28M20 20L36 12M20 20L4 12" stroke="currentColor"
-                        stroke-width="1.5" opacity="0.5" />
-                </svg>
-                <span class="logo-text">Build<span class="logo-accent">X</span></span>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-animation">
+            <h1 class="premium-logo">BuildX</h1>
+            <div class="premium-progress-container">
+                <div class="premium-progress-bar"></div>
             </div>
-            <div class="nav-links">
-                <a href="#home" class="nav-link active">Home</a>
-                <a href="services.html" class="nav-link">Services</a>
-                <a href="upload.html" class="nav-link">Upload & Order</a>
-                <a href="pricing.html" class="nav-link">Pricing</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-            </div>
-            <div class="nav-actions">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="5" />
-                        <line x1="12" y1="1" x2="12" y2="3" />
-                        <line x1="12" y1="21" x2="12" y2="23" />
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                        <line x1="1" y1="12" x2="3" y2="12" />
-                        <line x1="21" y1="12" x2="23" y2="12" />
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                    </svg>
-                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-                    </svg>
-                </button>
-                <a href="admin.html" class="btn-secondary">Admin</a>
-                <a href="upload.html" class="btn-primary">Get Started</a>
-            </div>
-            <button class="mobile-menu-toggle" id="mobileMenuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="premium-status">Loading</div>
         </div>
-    </nav>
+    </div>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-background">
-            <div class="grid-overlay"></div>
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-            <div class="gradient-orb orb-3"></div>
-        </div>
-        <div class="container hero-container">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="badge-dot"></span>
-                    <span>Precision Manufacturing, Delivered</span>
+    <!-- Main Website Content (Wrapped) -->
+    <div id="mainContent">
+
+        <!-- Navigation -->
+        <nav class="navbar" id="navbar">
+            <div class="container nav-container">
+                <div class="logo">
+                    <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 4L36 12V28L20 36L4 28V12L20 4Z" stroke="currentColor" stroke-width="2"
+                            stroke-linejoin="round" />
+                        <path d="M20 4V20M20 20L36 28M20 20L4 28M20 20L36 12M20 20L4 12" stroke="currentColor"
+                            stroke-width="1.5" opacity="0.5" />
+                    </svg>
+                    <span class="logo-text">Build<span class="logo-accent">X</span></span>
                 </div>
-                <h1 class="hero-title">
-                    Transform Your Designs Into
-                    <span class="gradient-text">Reality</span>
-                </h1>
-                <p class="hero-description">
-                    Professional CNC cutting, laser cutting, and 3D printing services.
-                    Upload your design, get instant pricing, and receive your parts in days.
-                </p>
-                <div class="hero-cta">
-                    <a href="upload.html" class="btn-primary btn-large">
-                        <span>Start Your Project</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
+                <div class="nav-links">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="upload.html" class="nav-link">Upload & Order</a>
+                    <a href="pricing.html" class="nav-link">Pricing</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5" />
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
                         </svg>
-                    </a>
-                    <a href="#how-it-works" class="btn-secondary btn-large">
-                        <span>How It Works</span>
-                    </a>
+                        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                    </button>
+
+                    <a href="upload.html" class="btn-primary">Get Started</a>
                 </div>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <div class="stat-value">10k+</div>
-                        <div class="stat-label">Parts Delivered</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">24h</div>
-                        <div class="stat-label">Avg. Turnaround</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">99.8%</div>
-                        <div class="stat-label">Quality Rate</div>
-                    </div>
-                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
-            <div class="hero-visual">
-                <div class="visual-card">
-                    <div class="card-glow"></div>
-                    <div class="visual-content">
-                        <div class="preview-window">
-                            <div class="window-header">
-                                <div class="window-dots">
-                                    <span></span><span></span><span></span>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-background">
+                <div class="grid-overlay"></div>
+                <div class="gradient-orb orb-1"></div>
+                <div class="gradient-orb orb-2"></div>
+                <div class="gradient-orb orb-3"></div>
+            </div>
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="badge-dot"></span>
+                        <span>Precision Manufacturing, Delivered</span>
+                    </div>
+                    <h1 class="hero-title">
+                        College Hardware & Setup
+                        <span class="gradient-text">Software</span>
+                    </h1>
+                    <p class="hero-description">
+                        Your one-stop shop for college hardware projects, software solutions, and professional
+                        fabrication services.
+                        We provide complete kits, custom hardware, and expert support.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="upload.html" class="btn-primary btn-large">
+                            <span>Start Your Project</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                        <a href="#how-it-works" class="btn-secondary btn-large">
+                            <span>How It Works</span>
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-value">10k+</div>
+                            <div class="stat-label">Parts Delivered</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">24h</div>
+                            <div class="stat-label">Avg. Turnaround</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">99.8%</div>
+                            <div class="stat-label">Quality Rate</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="visual-card">
+                        <div class="card-glow"></div>
+                        <div class="visual-content">
+                            <div class="preview-window">
+                                <div class="window-header">
+                                    <div class="window-dots">
+                                        <span></span><span></span><span></span>
+                                    </div>
+                                    <span class="window-title">3D Preview</span>
                                 </div>
-                                <span class="window-title">3D Preview</span>
-                            </div>
-                            <div class="preview-canvas" id="heroPreview">
-                                <!-- 3D preview will be rendered here -->
+                                <div class="preview-canvas" id="heroPreview">
+                                    <!-- 3D preview will be rendered here -->
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Services Overview -->
-    <section class="services-overview">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Our Services</h2>
-                <p class="section-description">Cutting-edge fabrication technology at your fingertips</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
-                        </svg>
-                    </div>
-                    <h3 class="service-title">3D Printing</h3>
-                    <p class="service-description">High-precision FDM and resin printing with multiple material options
-                    </p>
-                    <ul class="service-features">
-                        <li>PLA, ABS, PETG, Nylon</li>
-                        <li>Layer height from 0.1mm</li>
-                        <li>Multi-color printing</li>
-                    </ul>
-                    <a href="services.html#3d-printing" class="service-link">
-                        Learn More
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </a>
+        <!-- Services Overview -->
+        <section class="services-overview">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Our Services</h2>
+                    <p class="section-description">Cutting-edge fabrication technology at your fingertips</p>
                 </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                                <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
+                            </svg>
+                        </div>
+                        <h3 class="service-title">College Projects</h3>
+                        <p class="service-description">Complete hardware and software kits for engineering and college
+                            projects.</p>
+                        <ul class="service-features">
+                            <li>IoT & Arduino Kits</li>
+                            <li>Software Documentation</li>
+                            <li>Custom Hardware Build</li>
+                        </ul>
+                        <a href="services.html#3d-printing" class="service-link">
+                            Learn More
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
 
-                <div class="service-card featured">
-                    <div class="featured-badge">Most Popular</div>
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="M12 6v6l4 2" />
-                        </svg>
+                    <div class="service-card featured">
+                        <div class="featured-badge">Most Popular</div>
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 6v6l4 2" />
+                            </svg>
+                        </div>
+                        <h3 class="service-title">CNC Cutting</h3>
+                        <p class="service-description">Precision CNC machining for metals, plastics, and composites</p>
+                        <ul class="service-features">
+                            <li>Aluminum, Steel, Brass</li>
+                            <li>Tolerance ±0.05mm</li>
+                            <li>Complex geometries</li>
+                        </ul>
+                        <a href="services.html#cnc-cutting" class="service-link">
+                            Learn More
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </a>
                     </div>
-                    <h3 class="service-title">CNC Cutting</h3>
-                    <p class="service-description">Precision CNC machining for metals, plastics, and composites</p>
-                    <ul class="service-features">
-                        <li>Aluminum, Steel, Brass</li>
-                        <li>Tolerance ±0.05mm</li>
-                        <li>Complex geometries</li>
-                    </ul>
-                    <a href="services.html#cnc-cutting" class="service-link">
-                        Learn More
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </a>
-                </div>
 
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Laser Cutting</h3>
-                    <p class="service-description">Clean, precise laser cutting for wood, acrylic, and metal sheets</p>
-                    <ul class="service-features">
-                        <li>Wood, Acrylic, Steel</li>
-                        <li>Intricate patterns</li>
-                        <li>Smooth edges</li>
-                    </ul>
-                    <a href="services.html#laser-cutting" class="service-link">
-                        Learn More
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works -->
-    <section class="how-it-works" id="how-it-works">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">How It Works</h2>
-                <p class="section-description">From design to delivery in 4 simple steps</p>
-            </div>
-            <div class="steps-container">
-                <div class="step">
-                    <div class="step-number">01</div>
-                    <div class="step-content">
-                        <h3 class="step-title">Upload Your Design</h3>
-                        <p class="step-description">Support for STL, STEP, DXF, SVG, DWG, and PDF files</p>
-                    </div>
-                    <div class="step-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                            <polyline points="17 8 12 3 7 8" />
-                            <line x1="12" y1="3" x2="12" y2="15" />
-                        </svg>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-number">02</div>
-                    <div class="step-content">
-                        <h3 class="step-title">Preview & Configure</h3>
-                        <p class="step-description">Interactive 3D preview with material and finish options</p>
-                    </div>
-                    <div class="step-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                            <path d="M2 17l10 5 10-5" />
-                        </svg>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-number">03</div>
-                    <div class="step-content">
-                        <h3 class="step-title">Instant Pricing</h3>
-                        <p class="step-description">Real-time cost estimation with detailed breakdown</p>
-                    </div>
-                    <div class="step-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="12" y1="1" x2="12" y2="23" />
-                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                        </svg>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-number">04</div>
-                    <div class="step-content">
-                        <h3 class="step-title">Order & Track</h3>
-                        <p class="step-description">Secure checkout and real-time production tracking</p>
-                    </div>
-                    <div class="step-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-                        </svg>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Laser Cutting</h3>
+                        <p class="service-description">Clean, precise laser cutting for wood, acrylic, and metal sheets
+                        </p>
+                        <ul class="service-features">
+                            <li>Wood, Acrylic, Steel</li>
+                            <li>Intricate patterns</li>
+                            <li>Smooth edges</li>
+                        </ul>
+                        <a href="services.html#laser-cutting" class="service-link">
+                            Learn More
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-card">
-                <div class="cta-content">
-                    <h2 class="cta-title">Ready to bring your design to life?</h2>
-                    <p class="cta-description">Get instant pricing and start your order in minutes</p>
-                    <a href="upload.html" class="btn-primary btn-large">
-                        <span>Start Your Project</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </a>
+        <!-- How It Works -->
+        <section class="how-it-works" id="how-it-works">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">How It Works</h2>
+                    <p class="section-description">From design to delivery in 4 simple steps</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="logo">
-                        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20 4L36 12V28L20 36L4 28V12L20 4Z" stroke="currentColor" stroke-width="2"
-                                stroke-linejoin="round" />
-                            <path d="M20 4V20M20 20L36 28M20 20L4 28M20 20L36 12M20 20L4 12" stroke="currentColor"
-                                stroke-width="1.5" opacity="0.5" />
-                        </svg>
-                        <span class="logo-text">Build<span class="logo-accent">X</span></span>
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">01</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Upload Your Design</h3>
+                            <p class="step-description">Support for STL, STEP, DXF, SVG, DWG, and PDF files</p>
+                        </div>
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="17 8 12 3 7 8" />
+                                <line x1="12" y1="3" x2="12" y2="15" />
+                            </svg>
+                        </div>
                     </div>
-                    <p class="footer-description">Premium digital fabrication services for makers, engineers, and
-                        businesses.</p>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">Services</h4>
-                    <ul class="footer-links">
-                        <li><a href="services.html#3d-printing">3D Printing</a></li>
-                        <li><a href="services.html#cnc-cutting">CNC Cutting</a></li>
-                        <li><a href="services.html#laser-cutting">Laser Cutting</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">Company</h4>
-                    <ul class="footer-links">
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">Support</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 BuildX. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="#" aria-label="Twitter">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="LinkedIn">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
-                            <circle cx="4" cy="4" r="2" />
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="GitHub">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
-                        </svg>
-                    </a>
+
+                    <div class="step">
+                        <div class="step-number">02</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Preview & Configure</h3>
+                            <p class="step-description">Interactive 3D preview with material and finish options</p>
+                        </div>
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                                <path d="M2 17l10 5 10-5" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">03</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Instant Pricing</h3>
+                            <p class="step-description">Real-time cost estimation with detailed breakdown</p>
+                        </div>
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="1" x2="12" y2="23" />
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">04</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Order & Track</h3>
+                            <p class="step-description">Secure checkout and real-time production tracking</p>
+                        </div>
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                            </svg>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-card">
+                    <div class="cta-content">
+                        <h2 class="cta-title">Ready to bring your design to life?</h2>
+                        <p class="cta-description">Get instant pricing and start your order in minutes</p>
+                        <a href="upload.html" class="btn-primary btn-large">
+                            <span>Start Your Project</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <div class="logo">
+                            <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 4L36 12V28L20 36L4 28V12L20 4Z" stroke="currentColor" stroke-width="2"
+                                    stroke-linejoin="round" />
+                                <path d="M20 4V20M20 20L36 28M20 20L4 28M20 20L36 12M20 20L4 12" stroke="currentColor"
+                                    stroke-width="1.5" opacity="0.5" />
+                            </svg>
+                            <span class="logo-text">Build<span class="logo-accent">X</span></span>
+                        </div>
+                        <p class="footer-description">Premium digital fabrication services for makers, engineers, and
+                            businesses.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-title">Services</h4>
+                        <ul class="footer-links">
+                            <li><a href="services.html#3d-printing">3D Printing</a></li>
+                            <li><a href="services.html#cnc-cutting">CNC Cutting</a></li>
+                            <li><a href="services.html#laser-cutting">Laser Cutting</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-title">Company</h4>
+                        <ul class="footer-links">
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="pricing.html">Pricing</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-title">Support</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 BuildX. All rights reserved.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="GitHub">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
 
     <script src="js/loading.js"></script>
     <script src="js/main.js"></script>

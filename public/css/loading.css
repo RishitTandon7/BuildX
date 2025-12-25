@@ -42,7 +42,6 @@
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    display: none;
     z-index: -1;
 }
 

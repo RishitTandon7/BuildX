@@ -1,36 +1,48 @@
-// Simple, reliable loading screen
+// Reliable loading screen with minimum display time
 (function () {
-    // Create loading screen immediately
-    const loadingHTML = `
-        <div class="loading-screen" id="loadingScreen">
-            <div class="loading-animation">
-                <h1 class="premium-logo">BuildX</h1>
-                <div class="premium-progress-container">
-                    <div class="premium-progress-bar"></div>
-                </div>
-                <div class="premium-status">Loading</div>
-            </div>
-        </div>
-    `;
+    const MIN_DISPLAY_TIME = 2500; // Minimum 2.5 seconds
+    const startTime = Date.now();
 
-    // Insert at the very beginning of body
-    document.body.insertAdjacentHTML('afterbegin', loadingHTML);
-
-    // Function to hide loading screen
     function hideLoading() {
-        const loadingElement = document.getElementById('loadingScreen');
-        if (loadingElement) {
-            loadingElement.classList.add('hidden');
-            // Remove from DOM after animation
-            setTimeout(() => {
-                loadingElement.remove();
-            }, 1000);
-        }
+        const elapsedTime = Date.now() - startTime;
+        const remainingTime = Math.max(0, MIN_DISPLAY_TIME - elapsedTime);
+
+        setTimeout(() => {
+            const loadingElement = document.getElementById('loadingScreen');
+            const mainContent = document.getElementById('mainContent');
+
+            if (loadingElement) {
+                // Add hidden class to trigger CSS fade out
+                loadingElement.style.opacity = '0';
+
+                // Show main content
+                if (mainContent) {
+                    mainContent.classList.add('visible-content');
+                }
+
+                // Restore scrolling
+                document.body.style.overflow = '';
+
+                // Remove from DOM after transition completes (0.5s)
+                setTimeout(() => {
+                    loadingElement.remove();
+                }, 500);
+            }
+        }, remainingTime);
     }
 
-    // Hide on page load
-    window.addEventListener('load', hideLoading);
+    // Check if page is already loaded (e.g. from cache)
+    if (document.readyState === 'complete') {
+        hideLoading();
+    } else {
+        window.addEventListener('load', hideLoading);
+    }
 
-    // Failsafe: Always hide after 2.5 seconds
-    setTimeout(hideLoading, 2500);
+    // Failsafe: Force hide after 5 seconds just in case
+    setTimeout(() => {
+        const loadingElement = document.getElementById('loadingScreen');
+        if (loadingElement && document.body.contains(loadingElement)) {
+            hideLoading();
+        }
+    }, 5000);
 })();
