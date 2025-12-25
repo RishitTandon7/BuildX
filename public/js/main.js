@@ -5,7 +5,7 @@ const themeToggle = document.getElementById('themeToggle');
 const html = document.documentElement;
 
 // Load saved theme or default to light
-const savedTheme = localStorage.getItem('theme') || 'light';
+const savedTheme = localStorage.getItem('theme') || 'dark';
 html.setAttribute('data-theme', savedTheme);
 
 themeToggle?.addEventListener('click', () => {
@@ -214,6 +214,49 @@ function formatCurrency(amount, currency = 'INR') {
         currency: currency,
         minimumFractionDigits: 2
     }).format(amount);
+}
+
+// ===================================
+// SESSION MANAGEMENT
+// ===================================
+document.addEventListener('DOMContentLoaded', checkSession);
+
+async function checkSession() {
+    try {
+        const response = await fetch('/api/auth/user');
+        const data = await response.json();
+
+        if (data.user) {
+            updateUserUI(data.user);
+
+            // Redirect if on login page
+            if (window.location.pathname.includes('login.html')) {
+                window.location.href = 'index.html';
+            }
+        }
+    } catch (error) {
+        console.error('Session check failed:', error);
+    }
+}
+
+function updateUserUI(user) {
+    const loginBtns = document.querySelectorAll('a[href="login.html"]');
+
+    loginBtns.forEach(btn => {
+        btn.textContent = 'Logout';
+        btn.href = '/auth/logout';
+        btn.classList.add('logged-in');
+
+        // Optional: Add user avatar if button is in navbar
+        if (btn.classList.contains('btn-primary')) {
+            btn.title = `Logged in as ${user.name}`;
+        }
+    });
+
+    // If on admin page and not admin, redirect
+    if (window.location.pathname.includes('admin.html') && !user.isAdmin) {
+        window.location.href = 'index.html';
+    }
 }
 
 // Export for use in other modules

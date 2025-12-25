@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - BuildX</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/loading.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .pricing-card {
+            background: var(--color-surface);
+            padding: 2.5rem;
+            border-radius: var(--border-radius-xl);
+            border: 1px solid var(--color-border);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--color-primary);
+        }
+
+        .price-large {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin: 1rem 0;
+            font-family: var(--font-display);
+        }
+
+        .price-unit {
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+        }
+
+        .feature-list {
+            text-align: left;
+            margin: 2rem 0;
+            list-style: none;
+        }
+
+        .feature-list li {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .check-icon {
+            color: var(--color-success);
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mainContent">
+        <nav class="navbar" id="navbar">
+            <div class="container nav-container">
+                <div class="logo">
+                    <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 4L36 12V28L20 36L4 28V12L20 4Z" stroke="currentColor" stroke-width="2"
+                            stroke-linejoin="round" />
+                        <path d="M20 4V20M20 20L36 28M20 20L4 28M20 20L36 12M20 20L4 12" stroke="currentColor"
+                            stroke-width="1.5" opacity="0.5" />
+                    </svg>
+                    <span class="logo-text">Build<span class="logo-accent">X</span></span>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="projects.html" class="nav-link">Store</a>
+                    <a href="upload.html" class="nav-link">Upload & Order</a>
+                    <a href="#" class="nav-link active">Pricing</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="themeToggle">
+                        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5" />
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </svg>
+                        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                    </button>
+                    <a href="login.html" class="btn-primary">Login</a>
+                </div>
+            </div>
+        </nav>
+
+        <section class="hero" style="min-height: auto; padding-top: 150px; padding-bottom: 50px;">
+            <div class="container text-center">
+                <h1 class="hero-title">Simple, Transparent <span class="gradient-text">Pricing</span></h1>
+                <p class="hero-description" style="margin: 0 auto;">Choose the right plan for your project needs.</p>
+
+                <div class="pricing-grid">
+                    <!-- Software -->
+                    <div class="pricing-card">
+                        <h3>Software Solutions</h3>
+                        <div class="price-large">₹499<span class="price-unit">/start</span></div>
+                        <ul class="feature-list">
+                            <li><span class="check-icon">✓</span> Complete Source Code</li>
+                            <li><span class="check-icon">✓</span> Project Documentation (PDF)</li>
+                            <li><span class="check-icon">✓</span> Installation Guide</li>
+                            <li><span class="check-icon">✓</span> Basic Email Support</li>
+                        </ul>
+                        <a href="projects.html" class="btn-secondary"
+                            style="width: 100%; justify-content: center;">Browse Software</a>
+                    </div>
+
+                    <!-- Hardware -->
+                    <div class="pricing-card" style="border-color: var(--color-primary); transform: scale(1.05);">
+                        <div
+                            style="background: var(--color-primary); color: white; display: inline-block; padding: 0.25rem 0.75rem; border-radius: 99px; font-size: 0.8rem; margin-bottom: 1rem;">
+                            Most Popular</div>
+                        <h3>Hardware Kits</h3>
+                        <div class="price-large">₹999<span class="price-unit">/kit</span></div>
+                        <ul class="feature-list">
+                            <li><span class="check-icon">✓</span> All Components Included</li>
+                            <li><span class="check-icon">✓</span> Pre-Soldered Modules</li>
+                            <li><span class="check-icon">✓</span> Arduino/ESP Microcontroller</li>
+                            <li><span class="check-icon">✓</span> Video Tutorials</li>
+                        </ul>
+                        <a href="projects.html" class="btn-primary" style="width: 100%; justify-content: center;">Shop
+                            Kits</a>
+                    </div>
+
+                    <!-- Custom -->
+                    <div class="pricing-card">
+                        <h3>Custom Fabrication</h3>
+                        <div class="price-large">Variable<span class="price-unit"></span></div>
+                        <ul class="feature-list">
+                            <li><span class="check-icon">✓</span> 3D Printing (~₹5/gram)</li>
+                            <li><span class="check-icon">✓</span> Laser Cutting</li>
+                            <li><span class="check-icon">✓</span> PCB Design</li>
+                            <li><span class="check-icon">✓</span> Instant Auto-Quote</li>
+                        </ul>
+                        <a href="upload.html" class="btn-secondary" style="width: 100%; justify-content: center;">Get
+                            Quote</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
