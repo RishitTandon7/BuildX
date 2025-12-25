@@ -70,3 +70,10 @@ document.addEventListener('DOMContentLoaded', () => {
         window.loadingScreen.hide();
     }, 100);
 });
+
+// Failsafe: Always hide after 3 seconds no matter what
+setTimeout(() => {
+    if (window.loadingScreen && window.loadingScreen.loadingElement) {
+        window.loadingScreen.loadingElement.classList.add('hidden');
+    }
+}, 3000);
