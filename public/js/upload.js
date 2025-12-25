@@ -24,7 +24,7 @@ let pricing = {
     material: 0,
     machine: 0,
     finishing: 0,
-    setup: 10,
+    setup: 150,
     subtotal: 0,
     tax: 0,
     total: 0
@@ -38,28 +38,28 @@ let scene, camera, renderer, controls, currentMesh;
 // ===================================
 const materials = {
     '3d-printing': [
-        { id: 'pla', name: 'PLA', price: 0.05 },
-        { id: 'abs', name: 'ABS', price: 0.06 },
-        { id: 'petg', name: 'PETG', price: 0.07 },
-        { id: 'nylon', name: 'Nylon', price: 0.12 },
-        { id: 'tpu', name: 'TPU', price: 0.15 },
-        { id: 'resin', name: 'Resin', price: 0.20 }
+        { id: 'pla', name: 'PLA', price: 5.00 },
+        { id: 'abs', name: 'ABS', price: 6.00 },
+        { id: 'petg', name: 'PETG', price: 7.00 },
+        { id: 'nylon', name: 'Nylon', price: 12.00 },
+        { id: 'tpu', name: 'TPU', price: 15.00 },
+        { id: 'resin', name: 'Resin', price: 20.00 }
     ],
     'cnc-cutting': [
-        { id: 'aluminum', name: 'Aluminum', price: 0.25 },
-        { id: 'steel', name: 'Steel', price: 0.30 },
-        { id: 'brass', name: 'Brass', price: 0.35 },
-        { id: 'copper', name: 'Copper', price: 0.40 },
-        { id: 'acrylic', name: 'Acrylic', price: 0.15 },
-        { id: 'wood', name: 'Wood', price: 0.10 }
+        { id: 'aluminum', name: 'Aluminum', price: 25.00 },
+        { id: 'steel', name: 'Steel', price: 30.00 },
+        { id: 'brass', name: 'Brass', price: 35.00 },
+        { id: 'copper', name: 'Copper', price: 40.00 },
+        { id: 'acrylic', name: 'Acrylic', price: 15.00 },
+        { id: 'wood', name: 'Wood', price: 10.00 }
     ],
     'laser-cutting': [
-        { id: 'acrylic', name: 'Acrylic', price: 0.12 },
-        { id: 'wood', name: 'Wood', price: 0.08 },
-        { id: 'mdf', name: 'MDF', price: 0.06 },
-        { id: 'plywood', name: 'Plywood', price: 0.09 },
-        { id: 'cardboard', name: 'Cardboard', price: 0.03 },
-        { id: 'steel', name: 'Steel', price: 0.35 }
+        { id: 'acrylic', name: 'Acrylic', price: 12.00 },
+        { id: 'wood', name: 'Wood', price: 8.00 },
+        { id: 'mdf', name: 'MDF', price: 6.00 },
+        { id: 'plywood', name: 'Plywood', price: 9.00 },
+        { id: 'cardboard', name: 'Cardboard', price: 3.00 },
+        { id: 'steel', name: 'Steel', price: 35.00 }
     ]
 };
 
@@ -406,7 +406,7 @@ function populateMaterials() {
     materialGrid.innerHTML = serviceMaterials.map(mat => `
         <div class="material-option" data-material="${mat.id}" data-price="${mat.price}">
             <div class="material-name">${mat.name}</div>
-            <div class="material-price">$${mat.price}/cm³</div>
+            <div class="material-price">₹${mat.price}/cm³</div>
         </div>
     `).join('');
 
@@ -489,9 +489,9 @@ function calculatePrice() {
     // Finishing cost
     const finishCosts = {
         'standard': 0,
-        'smooth': 5,
-        'polished': 15,
-        'anodized': 25
+        'smooth': 200,
+        'polished': 800,
+        'anodized': 1500
     };
     pricing.finishing = (finishCosts[configuration.finish] || 0) * quantity;
 
@@ -505,14 +505,14 @@ function calculatePrice() {
 }
 
 function updatePriceDisplay() {
-    document.getElementById('priceMaterial').textContent = `$${pricing.material.toFixed(2)}`;
-    document.getElementById('priceMachine').textContent = `$${pricing.machine.toFixed(2)}`;
-    document.getElementById('priceFinishing').textContent = `$${pricing.finishing.toFixed(2)}`;
-    document.getElementById('priceSetup').textContent = `$${pricing.setup.toFixed(2)}`;
-    document.getElementById('priceSubtotal').textContent = `$${pricing.subtotal.toFixed(2)}`;
-    document.getElementById('priceTax').textContent = `$${pricing.tax.toFixed(2)}`;
-    document.getElementById('priceTotal').textContent = `$${pricing.total.toFixed(2)}`;
-    document.getElementById('finalTotal').textContent = `$${pricing.total.toFixed(2)}`;
+    document.getElementById('priceMaterial').textContent = `₹${pricing.material.toFixed(2)}`;
+    document.getElementById('priceMachine').textContent = `₹${pricing.machine.toFixed(2)}`;
+    document.getElementById('priceFinishing').textContent = `₹${pricing.finishing.toFixed(2)}`;
+    document.getElementById('priceSetup').textContent = `₹${pricing.setup.toFixed(2)}`;
+    document.getElementById('priceSubtotal').textContent = `₹${pricing.subtotal.toFixed(2)}`;
+    document.getElementById('priceTax').textContent = `₹${pricing.tax.toFixed(2)}`;
+    document.getElementById('priceTotal').textContent = `₹${pricing.total.toFixed(2)}`;
+    document.getElementById('finalTotal').textContent = `₹${pricing.total.toFixed(2)}`;
 
     // Update production time estimate
     const days = selectedService === '3d-printing' ? '2-3' : selectedService === 'cnc-cutting' ? '3-5' : '1-2';

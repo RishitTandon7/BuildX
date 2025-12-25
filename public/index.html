@@ -18,7 +18,7 @@
         /* Critical Loading CSS */
         body {
             margin: 0;
-            background: #0a0a0a;
+            background: var(--color-bg-primary);
         }
 
         #loadingScreen {
@@ -187,68 +187,86 @@
                     <p class="section-description">Cutting-edge fabrication technology at your fingertips</p>
                 </div>
                 <div class="services-grid">
-                    <div class="service-card">
+                    <!-- Hardware Customization & Kits -->
+                    <div class="service-card featured" id="hardware">
+                        <div class="featured-badge">Best Seller</div>
                         <div class="service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                                <path d="M12 2l10 5-10 5-10-5z" />
                                 <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
+                                <circle cx="12" cy="12" r="3" />
                             </svg>
                         </div>
-                        <h3 class="service-title">College Projects</h3>
-                        <p class="service-description">Complete hardware and software kits for engineering and college
-                            projects.</p>
+                        <h3 class="service-title">Hardware Kits</h3>
+                        <p class="service-description">Complete project kits with pre-soldered components, sensors, and
+                            chassis.</p>
                         <ul class="service-features">
                             <li>IoT & Arduino Kits</li>
-                            <li>Software Documentation</li>
-                            <li>Custom Hardware Build</li>
+                            <li>Robotics Parts</li>
+                            <li>Tested & Ready to Use</li>
                         </ul>
-                        <a href="services.html#3d-printing" class="service-link">
-                            Learn More
+                        <div class="price-tag"
+                            style="font-weight:700; color:var(--color-primary); margin-bottom:1rem; font-family: var(--font-display);">
+                            Starting from ₹999</div>
+                        <a href="upload.html" class="service-link">
+                            View Kits
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M5 12h14M12 5l7 7-7 7" />
                             </svg>
                         </a>
                     </div>
 
-                    <div class="service-card featured">
-                        <div class="featured-badge">Most Popular</div>
+                    <!-- Software Solutions -->
+                    <div class="service-card" id="software">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <line x1="16" y1="13" x2="8" y2="13" />
+                                <line x1="16" y1="17" x2="8" y2="17" />
+                                <polyline points="10 9 9 9 8 9" />
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Software Solutions</h3>
+                        <p class="service-description">Code, documentation, and expert setup support for your
+                            engineering projects.</p>
+                        <ul class="service-features">
+                            <li>Source Code & Libraries</li>
+                            <li>Project Reports (PDF/DOC)</li>
+                            <li>Installation Support</li>
+                        </ul>
+                        <div class="price-tag"
+                            style="font-weight:700; color:var(--color-primary); margin-bottom:1rem; font-family: var(--font-display);">
+                            Starting from ₹499</div>
+                        <a href="upload.html" class="service-link">
+                            Get Software
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- Custom Fabrication -->
+                    <div class="service-card" id="fabrication">
                         <div class="service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <circle cx="12" cy="12" r="10" />
                                 <path d="M12 6v6l4 2" />
                             </svg>
                         </div>
-                        <h3 class="service-title">CNC Cutting</h3>
-                        <p class="service-description">Precision CNC machining for metals, plastics, and composites</p>
+                        <h3 class="service-title">Custom Fabrication</h3>
+                        <p class="service-description">Industrial grade manufacturing service for custom parts and
+                            prototypes.</p>
                         <ul class="service-features">
-                            <li>Aluminum, Steel, Brass</li>
-                            <li>Tolerance ±0.05mm</li>
-                            <li>Complex geometries</li>
+                            <li>3D Printing (FDM/SLA)</li>
+                            <li>CNC Machining</li>
+                            <li>Laser Cutting</li>
                         </ul>
-                        <a href="services.html#cnc-cutting" class="service-link">
-                            Learn More
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7" />
-                            </svg>
-                        </a>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                            </svg>
-                        </div>
-                        <h3 class="service-title">Laser Cutting</h3>
-                        <p class="service-description">Clean, precise laser cutting for wood, acrylic, and metal sheets
-                        </p>
-                        <ul class="service-features">
-                            <li>Wood, Acrylic, Steel</li>
-                            <li>Intricate patterns</li>
-                            <li>Smooth edges</li>
-                        </ul>
-                        <a href="services.html#laser-cutting" class="service-link">
-                            Learn More
+                        <div class="price-tag"
+                            style="font-weight:700; color:var(--color-primary); margin-bottom:1rem; font-family: var(--font-display);">
+                            Get Instant Quote</div>
+                        <a href="upload.html" class="service-link">
+                            Upload Design
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M5 12h14M12 5l7 7-7 7" />
                             </svg>

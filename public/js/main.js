@@ -11,7 +11,7 @@ html.setAttribute('data-theme', savedTheme);
 themeToggle?.addEventListener('click', () => {
     const currentTheme = html.getAttribute('data-theme');
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    
+
     html.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
 });
@@ -24,13 +24,13 @@ let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-    
+
     if (currentScroll > 100) {
         navbar?.classList.add('scrolled');
     } else {
         navbar?.classList.remove('scrolled');
     }
-    
+
     lastScroll = currentScroll;
 });
 
@@ -52,10 +52,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
         if (href === '#') return;
-        
+
         e.preventDefault();
         const target = document.querySelector(href);
-        
+
         if (target) {
             const offsetTop = target.offsetTop - 80;
             window.scrollTo({
@@ -99,16 +99,16 @@ const navLinksAll = document.querySelectorAll('.nav-link');
 
 window.addEventListener('scroll', () => {
     let current = '';
-    
+
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-        
+
         if (pageYOffset >= sectionTop - 200) {
             current = section.getAttribute('id');
         }
     });
-    
+
     navLinksAll.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === `#${current}`) {
@@ -130,54 +130,54 @@ if (heroPreview) {
     canvas.style.width = '100%';
     canvas.style.height = '100%';
     heroPreview.appendChild(canvas);
-    
+
     const ctx = canvas.getContext('2d');
     let rotation = 0;
-    
+
     function drawCube() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
+
         const centerX = canvas.width / 2;
         const centerY = canvas.height / 2;
         const size = 80;
-        
+
         ctx.save();
         ctx.translate(centerX, centerY);
         ctx.rotate(rotation);
-        
+
         // Draw cube wireframe
         const gradient = ctx.createLinearGradient(-size, -size, size, size);
         gradient.addColorStop(0, '#4F46E5');
         gradient.addColorStop(1, '#7C3AED');
-        
+
         ctx.strokeStyle = gradient;
         ctx.lineWidth = 2;
-        
+
         // Front face
-        ctx.strokeRect(-size/2, -size/2, size, size);
-        
+        ctx.strokeRect(-size / 2, -size / 2, size, size);
+
         // Back face (offset)
         const offset = 40;
-        ctx.strokeRect(-size/2 + offset, -size/2 - offset, size, size);
-        
+        ctx.strokeRect(-size / 2 + offset, -size / 2 - offset, size, size);
+
         // Connecting lines
         ctx.beginPath();
-        ctx.moveTo(-size/2, -size/2);
-        ctx.lineTo(-size/2 + offset, -size/2 - offset);
-        ctx.moveTo(size/2, -size/2);
-        ctx.lineTo(size/2 + offset, -size/2 - offset);
-        ctx.moveTo(-size/2, size/2);
-        ctx.lineTo(-size/2 + offset, size/2 - offset);
-        ctx.moveTo(size/2, size/2);
-        ctx.lineTo(size/2 + offset, size/2 - offset);
+        ctx.moveTo(-size / 2, -size / 2);
+        ctx.lineTo(-size / 2 + offset, -size / 2 - offset);
+        ctx.moveTo(size / 2, -size / 2);
+        ctx.lineTo(size / 2 + offset, -size / 2 - offset);
+        ctx.moveTo(-size / 2, size / 2);
+        ctx.lineTo(-size / 2 + offset, size / 2 - offset);
+        ctx.moveTo(size / 2, size / 2);
+        ctx.lineTo(size / 2 + offset, size / 2 - offset);
         ctx.stroke();
-        
+
         ctx.restore();
-        
+
         rotation += 0.01;
         requestAnimationFrame(drawCube);
     }
-    
+
     drawCube();
 }
 
@@ -208,10 +208,11 @@ function formatFileSize(bytes) {
 }
 
 // Format currency
-function formatCurrency(amount, currency = 'USD') {
-    return new Intl.NumberFormat('en-US', {
+function formatCurrency(amount, currency = 'INR') {
+    return new Intl.NumberFormat('en-IN', {
         style: 'currency',
-        currency: currency
+        currency: currency,
+        minimumFractionDigits: 2
     }).format(amount);
 }
 
