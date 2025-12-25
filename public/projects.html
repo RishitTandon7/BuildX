@@ -288,29 +288,31 @@
             <span class="cart-count" id="cartCount">0</span>
         </div>
 
-        <!-- Cart Modal -->
-        <div class="cart-modal" id="cartModal">
-            <div class="cart-content">
-                <h2>Your Cart</h2>
-                <div class="cart-items" id="cartItems">
-                    <!-- Items go here -->
-                    <p style="text-align: center; color: var(--color-text-secondary);">Your cart is empty</p>
+        <!-- Cart Drawer -->
+        <div class="cart-drawer-overlay" id="cartOverlay"></div>
+        <div class="cart-drawer" id="cartDrawer">
+            <div class="cart-header">
+                <h2>Your Cart (<span id="drawerCartCount">0</span>)</h2>
+                <button class="cart-close-btn" id="closeCartBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="cart-body" id="cartItemsContainer">
+                <!-- Cart Items Injected Here -->
+            </div>
+            <div class="cart-footer">
+                <div
+                    style="display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 1.1rem; font-weight: 700;">
+                    <span>Total</span>
+                    <span id="drawerTotal">₹0</span>
                 </div>
-                <div style="margin-top: auto; border-top: 1px solid var(--color-border); padding-top: 1rem;">
-                    <div
-                        style="display: flex; justify-content: space-between; margin-bottom: 1rem; font-weight: 700; font-size: 1.2rem;">
-                        <span>Total:</span>
-                        <span id="modalTotal">₹0</span>
-                    </div>
-                    <button class="btn-primary" style="width: 100%; justify-content: center;"
-                        onclick="alert('Checkout functionality coming soon! For now, please screenshot your cart and contact us.')">
-                        Proceed to Checkout
-                    </button>
-                    <button class="btn-secondary" style="width: 100%; justify-content: center; margin-top: 0.5rem;"
-                        id="closeCart">
-                        Continue Shopping
-                    </button>
-                </div>
+                <button class="btn-primary" style="width: 100%; justify-content: center;"
+                    onclick="alert('Proceeding to checkout...')">
+                    Checkout Now
+                </button>
             </div>
         </div>
     </div>
