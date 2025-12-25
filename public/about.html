@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - BuildX</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/loading.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="mainContent">
+        <nav class="navbar" id="navbar">
+            <div class="container nav-container">
+                <div class="logo">
+                    <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 4L36 12V28L20 36L4 28V12L20 4Z" stroke="currentColor" stroke-width="2"
+                            stroke-linejoin="round" />
+                        <path d="M20 4V20M20 20L36 28M20 20L4 28M20 20L36 12M20 20L4 12" stroke="currentColor"
+                            stroke-width="1.5" opacity="0.5" />
+                    </svg>
+                    <span class="logo-text">Build<span class="logo-accent">X</span></span>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="projects.html" class="nav-link">Store</a>
+                    <a href="upload.html" class="nav-link">Upload & Order</a>
+                    <a href="#" class="nav-link active">About</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="themeToggle">
+                        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5" />
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </svg>
+                        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                    </button>
+                    <a href="login.html" class="btn-primary">Login</a>
+                </div>
+            </div>
+        </nav>
+
+        <section class="hero" style="min-height: 80vh; align-items: flex-start; padding-top: 150px;">
+            <div class="container">
+                <h1 class="hero-title" style="max-width: 800px;">Powering Innovation for <span
+                        class="gradient-text">Students & Makers</span></h1>
+                <p class="hero-description" style="max-width: 700px;">
+                    BuildX is dedicated to providing high-quality hardware components, project kits, and professional
+                    software solutions.
+                    Whether you are an engineering student working on your final year project or a hobbyist building
+                    your next invention, we have the tools you need.
+                </p>
+
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-top: 4rem;">
+                    <div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Our Mission</h3>
+                        <p style="color: var(--color-text-secondary); line-height: 1.6;">
+                            To simplify the fabrication and development process for students. We believe that access to
+                            quality parts and expert guidance shouldn't be a barrier to innovation.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">What We Offer</h3>
+                        <ul style="list-style: none; color: var(--color-text-secondary); line-height: 2;">
+                            <li>✓ Complete IoT & Robotics Kits</li>
+                            <li>✓ Custom CNC & 3D Printing</li>
+                            <li>✓ Verified Software Source Code</li>
+                            <li>✓ Detailed Project Documentation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
