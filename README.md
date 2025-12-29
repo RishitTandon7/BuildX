@@ -244,4 +244,5 @@ For issues or questions, please create an issue in the repository.
 
 ---
 
-Built with ❤️ for makers, engineers, and businesses
+Built with ❤️ for makers, engineers, and businesses by rishit tandon
+
